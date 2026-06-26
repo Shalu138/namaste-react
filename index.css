@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+.logo {
+  display: inline-block;
+  width: 200px;
+}
+
+.nav-item {
+  display: inline-block;
+  text-decoration: none;
+  color: #393939;
+  padding: 0 10px;
+}
+
+.res-card .res-img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.restaurant-row {
+  display: flex;
+  gap: 10px;
+}
