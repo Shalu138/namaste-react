@@ -127,8 +127,21 @@ const Header = () => {
   );
 };
 
+// Object created for Restaurant
+const resObj = {
+  type: "restaurant",
+  data: {
+    type: "V",
+    id: "1234",
+    name: "BOX 8",
+    costForTwo: "400",
+    avgRating: "3.6",
+    cusine: ["North Indian", "Indian"], //array
+  },
+};
+
 const RestaurantCard = (props) => {
-  console.log(props.resName);
+  const { resData } = props;
   return (
     <div className="res-card">
       <img
@@ -136,10 +149,10 @@ const RestaurantCard = (props) => {
         alt="restaurant-image"
         className="res-img"
       />
-      <h4 className="res-name">{props.resName}</h4>
-      <div>{props.cusine}</div>
-      <div>4 Star</div>
-      <div>25-30 min</div>
+      <h4 className="res-name">{resData.data.name}</h4>
+      <div>Rs. {resData.data.costForTwo}</div>
+      <div>{resData.data.avgRating} Star</div>
+      <div>{resData.data.cusine.join(", ")}</div>
     </div>
   );
 };
@@ -157,8 +170,8 @@ const Body = () => {
 
         <div className="restaurant-wrapper">
           <div className="restaurant-row">
-            <RestaurantCard resName="Box 8" cusine="North India" />
-            <RestaurantCard resName="Specia Bistro" cusine="Italian" />
+            <RestaurantCard resData={resObj} />
+            {/* <RestaurantCard resName="Specia Bistro" cusine="Italian" /> */}
           </div>
         </div>
       </div>
