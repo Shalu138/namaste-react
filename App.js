@@ -154,7 +154,7 @@ const resList = [
       avgRating: "4.1",
       deliveryTime: "20-25 min",
       image:
-        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/f8334117211ec4e74406caebec280995",
+        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1600,h_640,c_fill/e5f54df4ed8bac458b801ede76ee37d0",
     },
   },
   {
@@ -168,21 +168,21 @@ const resList = [
       avgRating: "4.5",
       deliveryTime: "40-45 min",
       image:
-        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/th67be72ccbc62a875a6cebec280995",
+        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1600,h_640,c_fill/x1bnynpgagxsy5ihuip9",
     },
   },
   {
     type: "restaurant",
     data: {
       id: "1004",
-      name: "Chai Point",
+      name: "Chayos",
       cuisine: "Bakery, Beverages, Cafe",
       typeOfRes: "Cafe / Quick Service",
       costForTwo: "250",
       avgRating: "3.9",
       deliveryTime: "15-20 min",
       image:
-        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/bpx34117211ec4e74406caebec280995",
+        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1600,h_640,c_fill/RX_THUMBNAIL/IMAGES/VENDOR/2024/4/17/2ce18342-6c04-4ebc-9725-788819ddaa56_6488.JPG",
     },
   },
   {
@@ -196,7 +196,7 @@ const resList = [
       avgRating: "4.2",
       deliveryTime: "20-30 min",
       image:
-        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/9924a4117211ec4e74406caebec280995",
+        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1600,h_640,c_fill/RX_THUMBNAIL/IMAGES/VENDOR/2026/6/25/2b189a59-4842-46d9-9c19-67c1a4e38348_1342213.JPG",
     },
   },
   {
@@ -210,7 +210,7 @@ const resList = [
       avgRating: "4.4",
       deliveryTime: "30-35 min",
       image:
-        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/sr834117211ec4e74406caebec280995",
+        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1600,h_640,c_fill/xqinz4rdvxbexou7df1h",
     },
   },
 ];
@@ -219,6 +219,8 @@ console.log(resList);
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+
+  const { name, costForTwo, avgRating, cuisine } = resData?.data;
   return (
     <div className="res-card">
       <img
@@ -226,10 +228,10 @@ const RestaurantCard = (props) => {
         alt="restaurant-image"
         className="res-img"
       />
-      <h4 className="res-name">{resData.data.name}</h4>
-      <div>Rs. {resData.data.costForTwo}</div>
-      <div>{resData.data.avgRating} Star</div>
-      <div>{resData.data.cuisine}</div>
+      <h4 className="res-name">{name}</h4>
+      <div>Rs. {costForTwo}</div>
+      <div>{avgRating} Star</div>
+      <div>{cuisine}</div>
     </div>
   );
 };
@@ -247,9 +249,9 @@ const Body = () => {
 
         <div className="restaurant-wrapper">
           <div className="restaurant-row">
-            <RestaurantCard resData={resList[0]} />
-            <RestaurantCard resData={resList[1]} />
-            {/* <RestaurantCard resName="Specia Bistro" cusine="Italian" /> */}
+            {resList.map((restaurant) => (
+              <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+            ))}
           </div>
         </div>
       </div>
